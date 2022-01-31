@@ -26,6 +26,7 @@ import (
 const (
 	ProtoTypeAGit   = "agit"
 	ProtoTypeGerrit = "gerrit"
+	ProtoTypeGitea  = "gitea"
 )
 
 // GitPushCommand holds command and args for git command.
@@ -51,6 +52,9 @@ func NewProtoHelper(sshInfo *SSHInfo) ProtoHelper {
 		return NewAGitProtoHelper(sshInfo)
 	case ProtoTypeGerrit:
 		return NewGerritProtoHelper(sshInfo)
+	case ProtoTypeGitea:
+		return NewGiteaProtoHelper(sshInfo)
+
 	case "":
 		return NewDefaultProtoHelper(sshInfo)
 	}
